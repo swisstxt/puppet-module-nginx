@@ -10,9 +10,9 @@ class nginx {
   }
   file{'/etc/nginx/nginx.conf':
     source => [
-        "puppet:///modules/site-nginx/$fqdn/nginx.conf",
-        "puppet:///modules/site-nginx/nginx.conf",
-        "puppet:///modules/nginx/nginx.conf",
+      "puppet://$server/modules/site-nginx/$fqdn/nginx.conf",
+      "puppet://$server/modules/site-nginx/nginx.conf",
+      "puppet://$server/modules/nginx/nginx.conf",
     ],
     require => Package['nginx'],
     notify => Service['nginx'],
