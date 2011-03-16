@@ -2,7 +2,7 @@ define nginx::configfile(
   $ensure = present
 ) {
   file{"/etc/nginx/$name":
-    enure => $ensure,
+    ensure => $ensure,
     source => [
       "puppet://$server/modules/site-nginx/$fqdn/$name",
       "puppet://$server/modules/site-nginx/$name",
