@@ -10,5 +10,6 @@ class nginx {
   }
   nginx::configfile{[
     'nginx.conf',
+    'mime.types',
   ]:}
 }
