@@ -1,6 +1,6 @@
 define nginx::configfile(
-  $ensure = present
-  $template = false,
+  $ensure = present,
+  $template = false
 ) {
   file{"/etc/nginx/$name":
     ensure => $ensure,
