@@ -10,7 +10,7 @@ define nginx::configfile(
   }
   if $template {
     File["/etc/nginx/$name"]{
-      content => template("site-nginx/$name"),
+      content => template("site-nginx/$name.erb"),
     }
   } else {
     File["/etc/nginx/$name"]{
