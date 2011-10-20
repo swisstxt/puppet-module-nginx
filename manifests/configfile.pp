@@ -8,7 +8,7 @@ define nginx::configfile(
   } else {
     $real_source = $name
   }
-  notice $$source
+  notice $source
   file{"/etc/nginx/$name":
     ensure => $ensure,
     notify => Service['nginx'],
