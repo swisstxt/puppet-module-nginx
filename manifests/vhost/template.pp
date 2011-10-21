@@ -3,7 +3,6 @@ define nginx::vhost::template(
   $source = undef
 ) {
   include nginx
-  notice $source 
   nginx::configfile{"conf.d/$name":
     ensure => $ensure,
     source => $source,
