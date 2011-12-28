@@ -1,2 +1,2 @@
 SOCKET=/var/run/spawn-fcgi.sock
-OPTIONS="-u icinga -g icinga -s $SOCKET -S -M 0600 -C 32 -F 1 -P /var/run/spawn-fcgi.pid -- /usr/bin/php-cgi"
+OPTIONS="-u nginx -g nginx -s $SOCKET -S -M 0600 -C 32 -F 1 -P /var/run/spawn-fcgi.pid -- /usr/bin/php-cgi"
