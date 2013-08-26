@@ -1,6 +1,5 @@
 class nginx (
   $nginx_package = 'nginx',
-  $site_classes = undef
 ){
   package{$nginx_package:
     ensure => installed,
@@ -16,7 +15,4 @@ class nginx (
     'nginx.conf',
     'mime.types',
   ]:}
-  if $site_classes {
-    class{$site_classes:}
-  }
 }
