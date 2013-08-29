@@ -12,11 +12,15 @@ define nginx::configfile(
     ensure => $ensure,
     notify => Service['nginx'],
     require => Package['nginx'],
-    owner => root, group => root, mode => 0440;
+    owner => root, group => root, mode => 0644;
   }
   if $template {
     File["/etc/nginx/$name"]{
       content => template("site-nginx/$real_source.erb"),
+    }
+  } elsif $source {
+    File["/etc/nginx/$name"]{
+      source => $source
     }
   } else {
     File["/etc/nginx/$name"]{
