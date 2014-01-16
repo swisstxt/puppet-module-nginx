@@ -15,7 +15,7 @@ define nginx::configfile(
     }
   } elsif $source {
     File["/etc/nginx/${name}"]{
-      source => ${source},
+      source => $source,
     }
   } else {
     File["/etc/nginx/${name}"]{
