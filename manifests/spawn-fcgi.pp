@@ -1,4 +1,5 @@
 class nginx::spawn-fcgi {
+  include ::nginx
   package { 'spawn-fcgi':
     ensure => present,
   } ->

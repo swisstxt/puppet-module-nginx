@@ -1,4 +1,4 @@
-define nginx::vhost::file(
+define nginx::vhost (
   $ensure  = present,
   $content = undef,
   $source  = undef,
@@ -8,5 +8,7 @@ define nginx::vhost::file(
     ensure  => $ensure,
     content => $content,
     source  => $source,
+    require => Package['nginx'],
+    notify  => Service['nginx'],
   }
 }
