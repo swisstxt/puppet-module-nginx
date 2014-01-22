@@ -1,18 +1,21 @@
 class nginx (
-  $package_name = 'nginx',
-  $configfile = [
+  $package = 'nginx',
+  $service = 'nginx',
+  $manage = [
     'nginx.conf',
     'mime.types',
   ],
 ) {
-  package { $package_name:
+  package { $package:
     ensure => present,
     alias  => 'nginx',
   } ->
-  service { 'nginx':
+  service { $service:
     ensure    => running,
     enable    => true,
     hasstatus => false,
   }
-  ::nginx::configfile { $configfile: }
+  ::nginx::configfile { $manage:
+    source_module => $caller_module_name,
+  }
 }

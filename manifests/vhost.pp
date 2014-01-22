@@ -5,10 +5,9 @@ define nginx::vhost (
 ) {
   include ::nginx
   nginx::configfile{"conf.d/$name":
-    ensure  => $ensure,
-    content => $content,
-    source  => $source,
-    require => Package['nginx'],
-    notify  => Service['nginx'],
+    ensure        => $ensure,
+    content       => $content,
+    source        => $source,
+    source_module => $caller_module_name,
   }
 }

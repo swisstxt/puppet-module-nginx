@@ -2,9 +2,13 @@ define nginx::configfile(
   $ensure = present,
   $content = undef,
   $source = undef,
+  $source_module = $caller_module_name,
 ) {
   file{"/etc/nginx/${name}":
     ensure  => $ensure,
+    owner   => root,
+    group   => root,
+    mode    => '0644',
     notify  => Service['nginx'],
     require => Package['nginx'],
   }
@@ -20,7 +24,7 @@ define nginx::configfile(
   } else {
     File["/etc/nginx/${name}"]{
       source => [
-        "puppet:///modules/${::caller_module_name}/${name}",
+        "puppet:///modules/${source_module}/${name}",
         "puppet:///modules/nginx/${name}",
       ],
     }
