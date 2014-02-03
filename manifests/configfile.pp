@@ -13,20 +13,22 @@ define nginx::configfile(
     require => Package['nginx'],
   }
 
-  if $content {
-    File["/etc/nginx/$name"]{
-      content => $content,
-    }
-  } elsif $source {
-    File["/etc/nginx/${name}"]{
-      source => $source,
-    }
-  } else {
-    File["/etc/nginx/${name}"]{
-      source => [
-        "puppet:///modules/${source_module}/${name}",
-        "puppet:///modules/nginx/${name}",
-      ],
+  if $ensure != 'absent' {
+    if $content {
+      File["/etc/nginx/$name"]{
+        content => $content,
+      }
+    } elsif $source {
+      File["/etc/nginx/${name}"]{
+        source => $source,
+      }
+    } else {
+      File["/etc/nginx/${name}"]{
+        source => [
+          "puppet:///modules/${source_module}/${name}",
+          "puppet:///modules/nginx/${name}",
+        ],
+      }
     }
   }
 }
