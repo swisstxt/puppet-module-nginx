@@ -1,13 +1,13 @@
 class nginx (
-  $package = 'nginx',
+  $package_name = 'nginx',
   $service = 'nginx',
   $manage = [
     'nginx.conf',
     'mime.types',
   ],
-  $purge_vhosts = false,
+  $confd_purge = false,
 ) {
-  package { $package:
+  package { $package_name:
     ensure => present,
     alias  => 'nginx',
   } ->
@@ -16,7 +16,7 @@ class nginx (
     enable    => true,
     hasstatus => false,
   }
-  if $purge_vhosts {
+  if $confd_purge {
     file { '/etc/nginx/conf.d':
       recurse => true,
       purge   => true,
