@@ -16,6 +16,10 @@ class nginx (
     enable    => true,
     hasstatus => false,
   }
+  exec {'reload-nginx':
+    command     => '/etc/init.d/nginx reload',
+    refreshonly => true,
+  }
   if $confd_purge {
     file { '/etc/nginx/conf.d':
       recurse => true,
