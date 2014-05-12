@@ -9,7 +9,7 @@ define nginx::configfile(
     owner   => root,
     group   => root,
     mode    => '0644',
-    notify  => Service['nginx'],
+    notify  => Exec['reload-nginx'],
     require => Package['nginx'],
   }
 
