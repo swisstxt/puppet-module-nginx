@@ -17,7 +17,7 @@ class nginx (
     hasstatus => false,
   }
   exec {'reload-nginx':
-    command     => '/etc/init.d/nginx reload',
+    command     => '/etc/init.d/nginx reload && /etc/init.d/nginx restart',
     refreshonly => true,
   }
   if $confd_purge {
